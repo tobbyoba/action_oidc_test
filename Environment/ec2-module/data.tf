@@ -10,8 +10,8 @@ data "terraform_remote_state" "network" {
 
 # Terraform >= 0.12
 resource "aws_instance" "ec2" {
-  ami           = "var.ami_id"
-  instance_type = "var.instance_type"
+  ami           = var.ami_id
+  instance_type = var.instance_type
   subnet_id     = data.terraform_remote_state.network.outputs.public_subnets[1]
 
   tags = {

@@ -12,7 +12,8 @@ data "terraform_remote_state" "network" {
 resource "aws_instance" "ec2" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  subnet_id     = data.terraform_remote_state.network.outputs.public_subnets[0]
+  subnet_id     = "data.terraform_remote_state.network.outputs.public_subnets[0]"
+
 
   tags = {
     "Name" = "var.custom_ec2"
